@@ -251,7 +251,7 @@ public protocol CBPinEntryViewDelegate: class {
                 button.backgroundColor = entryBackgroundColour
             }
         }
-        print("Teszt szöveg meghívódik?")
+        
         textField.becomeFirstResponder()
     }
 
