@@ -252,6 +252,7 @@ public protocol CBPinEntryViewDelegate: class {
             }
         }
         print("Teszt szöveg meghívódik?")
+        delegate?.textFieldTapped(true)
         textField.becomeFirstResponder()
     }
 
