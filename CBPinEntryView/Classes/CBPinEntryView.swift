@@ -193,7 +193,7 @@ public protocol CBPinEntryViewDelegate: class {
         textField.delegate = self
         textField.keyboardType = UIKeyboardType(rawValue: keyboardType) ?? .numberPad
         textField.addTarget(self, action: #selector(textfieldChanged(_:)), for: .editingChanged)
-        textField.addTarget(self, action: #selector(handleTextFieldTap(_:)), for: .allTouchEvents)
+        textField.addTarget(self, action: #selector(handleTextFieldTap(_:)), for: .touchDown)
         self.addSubview(textField)
 
         textField.isHidden = true
