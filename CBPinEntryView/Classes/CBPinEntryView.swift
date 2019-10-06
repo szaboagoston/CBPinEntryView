@@ -11,6 +11,7 @@ import UIKit
 public protocol CBPinEntryViewDelegate: class {
     func entryChanged(_ completed: Bool)
     func entryCompleted(with entry: String?)
+    func textFieldTapped(_ tapped: Bool)
 }
 
 @IBDesignable open class CBPinEntryView: UIView {
@@ -192,7 +193,7 @@ public protocol CBPinEntryViewDelegate: class {
         textField.delegate = self
         textField.keyboardType = UIKeyboardType(rawValue: keyboardType) ?? .numberPad
         textField.addTarget(self, action: #selector(textfieldChanged(_:)), for: .editingChanged)
-
+        textField.addTarget(self, action: #selector(handleTextFieldTap(_:)), for: .allTouchEvents)
         self.addSubview(textField)
 
         textField.isHidden = true
@@ -328,6 +329,10 @@ extension CBPinEntryView: UITextFieldDelegate {
         if complete {
             delegate?.entryCompleted(with: textField.text)
         }
+    }
+    
+    @objc func handleTextFieldTap(_ textField: UITextField) {
+        delegate?.textFieldTapped(true)
     }
 
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
